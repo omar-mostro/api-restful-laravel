@@ -307,6 +307,7 @@ class ComposerStaticInitdc5c5b7dfb78f97791dd400cfe0d5667
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
+        'CategoryProductTable' => __DIR__ . '/../..' . '/database/migrations/2017_10_06_044428_category_product_table.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_08_032517_create_categories_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProductsTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_08_032550_create_products_table.php',
