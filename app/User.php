@@ -34,6 +34,22 @@ class User extends Model
         'verfication_token'
     ];
 
+    public function setNameAttribute($valor)
+    {
+
+        $this->attributes['name'] = strtolower($valor);
+    }
+
+    public function getNameAttribute($valor){
+
+        return ucwords($valor);
+    }
+
+    public function setEmailAttribute($email){
+
+        $this->attributes['email'] = strtolower($email);
+    }
+
     public function esVerificado()
     {
         $this->verified = User::USUARIO_VERIFICADO;
