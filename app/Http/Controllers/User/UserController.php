@@ -17,7 +17,7 @@ class UserController extends ApiController
     {
         $usuarios = User::all();
 
-        return response()->json(['data' => $usuarios], 200);
+        return $this->showAll($usuarios);
     }
 
 
@@ -43,7 +43,7 @@ class UserController extends ApiController
         $campos['admin'] = User::USUARIO_REGULAR;
         $usuario = User::create($campos);
 
-        return response()->json(['data' => $usuario], 201);
+        return $this->showOne($usuario, 201);
     }
 
     /**
@@ -56,7 +56,7 @@ class UserController extends ApiController
     {
         $usuario = User::findOrFail($id);
 
-        return response()->json(['data' => $usuario], 200);
+        return $this->showOne($usuario);
 
     }
 
@@ -102,6 +102,8 @@ class UserController extends ApiController
             return response()->json(['data' => 'Se debe especificar al menos un valor diferente para actualizar', 'code' => 422], 422);
         }
         $user->save();
+
+        return $this->showOne($user);
     }
 
     /**
@@ -116,6 +118,6 @@ class UserController extends ApiController
 
         $user->delete();
 
-        return response()->json(['data' => $user], 200);
+        return $this->showOne($user);
     }
 }
