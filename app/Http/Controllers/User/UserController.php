@@ -52,11 +52,13 @@ class UserController extends ApiController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $usuario = User::findOrFail($id);
+        /*En lugar de pasar como parametro un id pasamos la misma instancia
+        y es como si se ejecutara el siguiente procedimiento
+        $usuario = User::findOrFail($id);*/
 
-        return $this->showOne($usuario);
+        return $this->showOne($user);
 
     }
 
@@ -68,10 +70,8 @@ class UserController extends ApiController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $user = User::findOrFail($id);
-
         $reglas = [
             'email' => 'email|unique:users,email,' . $user->id,
             'password' => 'min:6|confirmed',
@@ -92,14 +92,15 @@ class UserController extends ApiController
         }
         if ($request->has('admin')) {
 
-
             if (!$user->esVerificado()) {
-                return response()->json(['data' => 'Unicamente los usuarios verificados pueden cambiar su valor de administrador'], 409);
+
+                return $this->errorResponse('Unicamente los usuarios verificados pueden cambiar su valor de administrador', 409);
             }
             $user->admin = $request->admin;
         }
         if (!$user->isDirty()) {
-            return response()->json(['data' => 'Se debe especificar al menos un valor diferente para actualizar', 'code' => 422], 422);
+
+            return $this->errorResponse('Se debe especificar al menos un valor diferente para actualizar', 422);
         }
         $user->save();
 
@@ -112,9 +113,8 @@ class UserController extends ApiController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::findOrFail($id);
 
         $user->delete();
 
