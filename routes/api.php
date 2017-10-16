@@ -24,7 +24,7 @@ Route::resource('categories', 'Category\CategoryController', ['except' => ['crea
 Route::resource('products', 'Product\ProductController', ['only' => ['show', 'index']]);
 
 //Transactions
-Route::resource('trasactions', 'Transaction\TransactionController', ['only' => ['show', 'index']]);
+Route::resource('transactions', 'Transaction\TransactionController', ['only' => ['show', 'index']]);
 
 // Sellers
 Route::resource('sellers', 'Seller\SellerController', ['only' => ['show', 'index']]);
