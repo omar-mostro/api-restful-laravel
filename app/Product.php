@@ -24,6 +24,10 @@ class Product extends Model
 
         ];
 
+    protected $hidden = [
+        'pivot'
+    ];
+
     public function estaDisponible()
     {
 
