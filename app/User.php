@@ -54,12 +54,12 @@ class User extends Model
 
     public function esVerificado()
     {
-        $this->verified = User::USUARIO_VERIFICADO;
+        return $this->verified == User::USUARIO_VERIFICADO;
     }
 
     public function esAdminstrador()
     {
-        $this->admin = User::USUARIO_ADMINISTRADOR;
+        return $this->admin == User::USUARIO_ADMINISTRADOR;
     }
 
     public static function generarVerificationToken()
