@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Traits\ApiResponser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Model
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable, SoftDeletes, ApiResponser;
 
     protected $table = 'users';
     protected $dates = ['deleted_at'];

@@ -15,11 +15,12 @@ class SellerTransactionController extends ApiController
      */
     public function index(Seller $seller)
     {
+
+
         $categories = $seller->products()
             ->with('transactions')
             ->get()
             ->pluck('categories')
-            ->sortBy('id')
             ->collapse()
             ->unique('id')
             ->values();

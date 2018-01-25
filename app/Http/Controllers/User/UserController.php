@@ -37,6 +37,7 @@ class UserController extends ApiController
         ];
         $this->validate($request, $reglas);
         $campos = $request->all();
+        $campos['uuid'] = User::USUARIO_REGULAR;
         $campos['password'] = bcrypt($request->password);
         $campos['verified'] = User::USUARIO_NO_VERIFICADO;
         $campos['verification_token'] = User::generarVerificationToken();
